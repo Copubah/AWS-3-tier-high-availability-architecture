@@ -31,8 +31,8 @@
 
 ## Usage
 1. Clone the repository
-  - git clone https://github.com/your-username/3tier-aws-terraform.git
-  - cd 3tier-aws-terraform
+  - git clone https://github.com/Copubah/AWS-3-tier-high-availability-architecture
+  - cd AWS-3-tier-high-availability-architecture
 
 
 2. Initialize Terraform
