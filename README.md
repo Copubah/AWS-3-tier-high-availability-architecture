@@ -1,42 +1,77 @@
 # AWS 3-Tier High Availability Architecture
-
-- This project demonstrates how to design and configure a **highly available 3-tier architecture on AWS**, leveraging services like EC2, Elastic Load Balancers, Auto Scaling Groups, and RDS across multiple Availability Zones (AZs).
-
-##  Architecture Overview
-The infrastructure is broken down into three main tiers:
-
-1. Presentation Tier (User Interface)
-  ## Purpose: Accepts user traffic, handles UI/UX, routes requests.
-- Amazon Route 53- DNS management and health checks
-- Application Load Balancer (ALB) Public-facing
-- EC2 Auto Scaling Group** – Web servers (e.g., NGINX/Apache)
-- Deployed in 2+ Availability Zones
-
-2. Application Tier (Business Logic)
- ## Purpose: Hosts business logic (e.g., Node.js, Python, Java).
-- Private EC2 Instances or Containers
-- Internal ALB** – Load balances app layer traffic
-- Auto Scaling Group** for backend services
-
-3. Data Tier (Persistence)
-## Purpose: Stores and manages persistent data.
-- Amazon RDS (Multi-AZ) – Relational database
-
-
-
-##  Technologies Used
-
-- AWS EC2
-- AWS Auto Scaling Groups
-- AWS Load Balancers (ALB)
-- Amazon RDS (PostgreSQL or MySQL)
-- Amazon Route 53
-- Amazon VPC & Subnets (2+ AZs)
-- (Optional) Terraform or AWS CloudFormation
-
+##  This Terraform project provisions a full 3-tier architecture on AWS, including:
+- Custom VPC
+- 1 public subnet and 3 private subnets across multiple Availability Zones
+- Internet Gateway and NAT Gateway
+- Bastion Host in the public subnet
+- Web Server (Apache + PHP) in the public subnet
+- App Server (MariaDB client) in a private subnet
+- RDS (MariaDB) in private subnets
+- Security groups for controlled access between layers
 
 
 ## Architecture Diagram
 ![AWS 3-Tier](./assets/Tier3Topology.png)
+
+
+## Prerequisites
+- [Terraform](https://www.terraform.io/downloads) installed
+- AWS CLI configured (`aws configure`)
+- A valid EC2 key pair created in the AWS Console
+
+
+## Project Structure
+- 3tier-aws-terraform/
+- main.tf         # All Terraform infrastructure
+-  variables.tf    # Input variables
+-  outputs.tf      # Output values
+- .gitignore      # Ignore Terraform cache and state
+- README.md       # This file
+
+
+## Usage
+1. Clone the repository
+  - git clone https://github.com/your-username/3tier-aws-terraform.git
+  - cd 3tier-aws-terraform
+
+
+2. Initialize Terraform
+  - terraform init
+
+3. Apply the configuration
+- Replace your-key-name with the name of your existing EC2 key pair:
+- terraform apply -var="key_name=your-key-name"
+Terraform will show the resources to be created. Type yes to confirm.
+
+
+## Outputs
+- After a successful apply, Terraform will display:
+- Bastion Host public IP
+- Web Server public IP
+- App Server private IP
+- RDS database endpoint
+- Use these to SSH into your Bastion and connect to your internal resources.
+
+
+
+ ## Connect to Private Servers
+- SSH into the Bastion Host:
+  - ssh -i your-key.pem ec2-user@<bastion-public-ip>
+
+- From Bastion, connect to App Server or Database:
+  - ssh -i your-key.pem ec2-user@<app-private-ip>
+
+## Clean Up
+- To delete all created resources:
+  - terraform destroy -var="key_name=your-key-name"
+
+
+## License
+
+MIT
+
+
+
+
 
 
