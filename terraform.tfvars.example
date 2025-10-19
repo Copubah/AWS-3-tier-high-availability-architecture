@@ -1,0 +1,35 @@
+# Project Configuration
+project_name = "three-tier-app"
+environment  = "dev"
+
+# AWS Configuration
+aws_region         = "us-east-1"
+availability_zones = ["us-east-1a", "us-east-1b", "us-east-1c"]
+
+# Network Configuration
+vpc_cidr               = "10.0.0.0/16"
+public_subnet_cidrs    = ["10.0.1.0/24"]
+private_subnet_cidrs   = ["10.0.2.0/24", "10.0.3.0/24", "10.0.4.0/24"]
+
+# Security Configuration
+allowed_ssh_cidrs = ["0.0.0.0/0"]  # Restrict this to your IP for better security
+
+# Compute Configuration
+instance_type = "t3.micro"
+key_name      = "your-key-name"  # Replace with your actual key pair name
+
+# Database Configuration
+db_instance_class       = "db.t3.micro"
+db_allocated_storage    = 20
+db_username            = "admin"
+db_password            = "YourSecurePassword123!"  # Use a strong password
+enable_multi_az        = false
+backup_retention_period = 7
+
+# Tags
+common_tags = {
+  Terraform   = "true"
+  Project     = "three-tier-architecture"
+  Owner       = "your-name"
+  CostCenter  = "development"
+}
