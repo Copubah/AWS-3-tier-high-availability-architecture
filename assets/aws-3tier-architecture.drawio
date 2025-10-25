@@ -1,0 +1,139 @@
+<mxfile host="app.diagrams.net" modified="2024-01-01T00:00:00.000Z" agent="5.0" etag="example" version="22.1.16" type="device">
+  <diagram name="AWS-3Tier-Architecture" id="aws-3tier">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- AWS Region -->
+        <mxCell id="region" value="AWS Region (us-east-1)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F4FD;strokeColor=#1E88E5;fontSize=16;fontStyle=1;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="50" y="50" width="1050" height="700" as="geometry" />
+        </mxCell>
+        
+        <!-- VPC -->
+        <mxCell id="vpc" value="VPC (10.0.0.0/16)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E8;strokeColor=#4CAF50;fontSize=14;fontStyle=1;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="80" y="100" width="990" height="620" as="geometry" />
+        </mxCell>
+        
+        <!-- Internet Gateway -->
+        <mxCell id="igw" value="Internet Gateway" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#FF9800;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="500" y="20" width="120" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- Availability Zone 1a -->
+        <mxCell id="az1a" value="Availability Zone us-east-1a" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#9C27B0;fontSize=12;fontStyle=1;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="110" y="140" width="280" height="550" as="geometry" />
+        </mxCell>
+        
+        <!-- Public Subnet 1a -->
+        <mxCell id="public1a" value="Public Subnet&#10;10.0.1.0/24" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#FF9800;fontSize=11;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="130" y="170" width="240" height="200" as="geometry" />
+        </mxCell>
+        
+        <!-- Private Subnet 1a -->
+        <mxCell id="private1a" value="Private Subnet&#10;10.0.2.0/24" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#757575;fontSize=11;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="130" y="400" width="240" height="270" as="geometry" />
+        </mxCell>
+        
+        <!-- Availability Zone 1b -->
+        <mxCell id="az1b" value="Availability Zone us-east-1b" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#9C27B0;fontSize=12;fontStyle=1;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="420" y="140" width="280" height="550" as="geometry" />
+        </mxCell>
+        
+        <!-- Private Subnet 1b -->
+        <mxCell id="private1b" value="Private Subnet&#10;10.0.3.0/24" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#757575;fontSize=11;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="440" y="400" width="240" height="270" as="geometry" />
+        </mxCell>
+        
+        <!-- Availability Zone 1c -->
+        <mxCell id="az1c" value="Availability Zone us-east-1c" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#9C27B0;fontSize=12;fontStyle=1;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="730" y="140" width="280" height="550" as="geometry" />
+        </mxCell>
+        
+        <!-- Private Subnet 1c -->
+        <mxCell id="private1c" value="Private Subnet&#10;10.0.4.0/24" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#757575;fontSize=11;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="750" y="400" width="240" height="270" as="geometry" />
+        </mxCell>
+        
+        <!-- EC2 Instances -->
+        <mxCell id="bastion" value="Bastion Host&#10;(t3.micro)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFEB3B;strokeColor=#F57F17;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="150" y="200" width="80" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="web" value="Web Server&#10;(t3.micro)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFEB3B;strokeColor=#F57F17;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="270" y="200" width="80" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="nat" value="NAT Gateway" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4CAF50;strokeColor=#2E7D32;fontSize=10;fontColor=white;" vertex="1" parent="1">
+          <mxGeometry x="200" y="300" width="80" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="app" value="App Server&#10;(t3.micro)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#90A4AE;strokeColor=#455A64;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="200" y="500" width="80" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- RDS -->
+        <mxCell id="rds" value="RDS MariaDB&#10;(db.t3.micro)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#9C27B0;strokeColor=#6A1B9A;fontSize=10;fontColor=white;" vertex="1" parent="1">
+          <mxGeometry x="510" y="500" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Security Groups (represented as shields) -->
+        <mxCell id="sg-legend" value="Security Groups" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="150" width="100" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="sg-bastion" value="🛡️ Bastion SG&#10;SSH (22)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="180" width="80" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="sg-web" value="🛡️ Web SG&#10;HTTP/HTTPS" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="210" width="80" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="sg-app" value="🛡️ App SG&#10;Port 8080" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="240" width="80" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="sg-db" value="🛡️ DB SG&#10;MySQL (3306)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="270" width="80" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- Traffic Flow Arrows -->
+        <mxCell id="arrow1" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#FF5722;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="560" y="60" as="sourcePoint" />
+            <mxPoint x="310" y="200" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="arrow2" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#4CAF50;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="310" y="250" as="sourcePoint" />
+            <mxPoint x="240" y="500" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="arrow3" value="" style="endArrow=classic;html=1;rounded=0;strokeColor=#9C27B0;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="280" y="530" as="sourcePoint" />
+            <mxPoint x="510" y="530" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Labels -->
+        <mxCell id="label1" value="Internet Traffic" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#FF5722;" vertex="1" parent="1">
+          <mxGeometry x="400" y="120" width="80" height="20" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="label2" value="Internal Traffic" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#4CAF50;" vertex="1" parent="1">
+          <mxGeometry x="250" y="350" width="80" height="20" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="label3" value="Database Access" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#9C27B0;" vertex="1" parent="1">
+          <mxGeometry x="350" y="510" width="80" height="20" as="geometry" />
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

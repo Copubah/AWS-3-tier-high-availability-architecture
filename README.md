@@ -20,7 +20,34 @@ This infrastructure includes:
 - Environment-specific configurations
 
 ## Architecture Diagram
-![AWS 3-Tier](./assets/Tier3Topology.png)
+
+![AWS 3-Tier Architecture](./assets/Tier3Topology.png)
+
+### Creating Your Own Diagram
+
+You can create a detailed architecture diagram using:
+
+1. **draw.io (Recommended)**
+   - Import the provided template: [aws-3tier-architecture.drawio](./assets/aws-3tier-architecture.drawio)
+   - Follow the detailed guide: [Architecture Diagram Guide](./assets/architecture-diagram-guide.md)
+
+2. **Lucidchart**
+   - Use the AWS architecture template
+   - Follow the component layout in the diagram guide
+
+3. **AWS Architecture Icons**
+   - Download official AWS icons from [AWS Architecture Center](https://aws.amazon.com/architecture/icons/)
+   - Use consistent colors and styling as outlined in the guide
+
+### Architecture Components
+
+The diagram shows the complete 3-tier architecture with:
+- Internet Gateway for public internet access
+- Public subnets hosting web servers and bastion host
+- Private subnets for application servers and database
+- NAT Gateway for outbound internet access from private subnets
+- Security groups controlling traffic between tiers
+- Multi-AZ deployment for high availability
 
 ## Prerequisites
 
@@ -45,6 +72,13 @@ Your AWS credentials need permissions for:
 ├── terraform.tfvars.example   # Example variable values
 ├── .gitignore                 # Git ignore patterns
 ├── README.md                  # This file
+├── assets/                    # Architecture diagrams and guides
+│   ├── Tier3Topology.png      # Current architecture diagram
+│   ├── aws-3tier-architecture.drawio  # draw.io diagram template
+│   └── architecture-diagram-guide.md  # Detailed diagram creation guide
+├── docs/                      # Additional documentation
+│   ├── cost-optimization.md   # Comprehensive cost optimization guide
+│   └── cost-calculator.md     # Cost breakdown and calculation tools
 └── modules/
     ├── networking/            # VPC, subnets, routing
     │   ├── main.tf
@@ -169,10 +203,35 @@ mysql -h <rds-endpoint> -u admin -p
 
 ## Cost Optimization
 
-- Uses single NAT Gateway (can be expanded for HA)
-- t3.micro instances (upgrade for production)
-- db.t3.micro RDS instance (upgrade for production)
-- GP2 storage (consider GP3 for better performance/cost)
+This architecture is designed with cost optimization in mind:
+
+### Current Cost Structure
+- Development Environment: ~$70/month
+- Production Environment: ~$214/month
+
+### Key Cost Optimizations Implemented
+- Single NAT Gateway for development (can be expanded for HA in production)
+- Burstable t3.micro instances (right-sized for workload)
+- GP2 storage with auto-scaling enabled
+- Environment-specific backup retention policies
+- Comprehensive resource tagging for cost allocation
+
+### Additional Cost Savings Opportunities
+- Switch to Spot Instances for development (70% savings)
+- Use NAT Instance instead of NAT Gateway (94% savings)
+- Implement Reserved Instances for production (40% savings)
+- Upgrade to GP3 storage for better price/performance (20% savings)
+- Automated resource scheduling for non-production environments
+
+### Potential Annual Savings
+With full optimization implementation:
+- Development: Up to 80% cost reduction
+- Production: Up to 35% cost reduction
+- Total potential annual savings: ~$2,200
+
+For detailed cost optimization strategies, see [Cost Optimization Guide](./docs/cost-optimization.md).
+
+For specific cost calculations and scenarios, see [Cost Calculator](./docs/cost-calculator.md).
 
 ## Scaling Considerations
 
