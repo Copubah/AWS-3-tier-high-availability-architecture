@@ -27,15 +27,15 @@ This infrastructure includes:
 
 You can create a detailed architecture diagram using:
 
-1. **draw.io (Recommended)**
+1. draw.io (Recommended)
    - Import the provided template: [aws-3tier-architecture.drawio](./assets/aws-3tier-architecture.drawio)
    - Follow the detailed guide: [Architecture Diagram Guide](./assets/architecture-diagram-guide.md)
 
-2. **Lucidchart**
+2. Lucidchart
    - Use the AWS architecture template
    - Follow the component layout in the diagram guide
 
-3. **AWS Architecture Icons**
+3. AWS Architecture Icons
    - Download official AWS icons from [AWS Architecture Center](https://aws.amazon.com/architecture/icons/)
    - Use consistent colors and styling as outlined in the guide
 

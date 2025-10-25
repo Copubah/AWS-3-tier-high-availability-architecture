@@ -11,7 +11,7 @@
 | NAT Gateway | Standard | 1 | $32.00 | $32.00 |
 | EBS | GP2 20GB | 3 | $2.00 | $6.00 |
 | Data Transfer | Outbound | - | - | $5.00 |
-| **Total Development** | | | | **$70.00** |
+| Total Development | | | | $70.00 |
 
 ### Staging Environment
 
@@ -22,7 +22,7 @@
 | NAT Gateway | Standard | 1 | $32.00 | $32.00 |
 | EBS | GP3 40GB | 3 | $3.20 | $9.60 |
 | Data Transfer | Outbound | - | - | $8.00 |
-| **Total Staging** | | | | **$119.60** |
+| Total Staging | | | | $119.60 |
 
 ### Production Environment
 
@@ -34,7 +34,7 @@
 | NAT Gateway | Standard (2 AZ) | 2 | $32.00 | $64.00 |
 | EBS | GP3 100GB | 3 | $8.00 | $24.00 |
 | Data Transfer | Outbound | - | - | $15.00 |
-| **Total Production** | | | | **$263.00** |
+| Total Production | | | | $263.00 |
 
 ## Cost Optimization Scenarios
 
@@ -45,7 +45,7 @@
 | GP3 Storage | $1.20 | $4.80 | $72 |
 | Right-sizing | $5.00 | $15.00 | $240 |
 | Reserved Instances | - | $36.00 | $432 |
-| **Total** | **$6.20** | **$55.80** | **$744** |
+| Total | $6.20 | $55.80 | $744 |
 
 ### Scenario 2: Aggressive Optimizations
 
@@ -56,7 +56,7 @@
 | Reserved Instances | - | $36.00 | $432 |
 | Auto Scaling | - | $27.00 | $324 |
 | Resource Scheduling | $21.00 | $26.30 | $568 |
-| **Total** | **$60.50** | **$121.30** | **$2,182** |
+| Total | $60.50 | $121.30 | $2,182 |
 
 ## Cost Calculator Formula
 
@@ -153,4 +153,4 @@ Total: $71.50/month
 | No Optimization | $3,156 | $3,156 | $3,156 | $9,468 |
 | Basic Optimization | $2,412 | $2,412 | $2,412 | $7,236 |
 | Full Optimization | $1,974 | $1,974 | $1,974 | $5,922 |
-| **Total Savings** | | | | **$3,546** |
+| Total Savings | | | | $3,546 |

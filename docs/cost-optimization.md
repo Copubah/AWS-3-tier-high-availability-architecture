@@ -7,24 +7,24 @@ This document provides detailed cost optimization strategies for the AWS 3-tier 
 ## Current Architecture Costs (Monthly Estimates)
 
 ### Development Environment
-- **EC2 Instances (3x t3.micro)**: ~$15.00/month
+- EC2 Instances (3x t3.micro): ~$15.00/month
   - Bastion Host: ~$5.00
   - Web Server: ~$5.00
   - App Server: ~$5.00
-- **RDS (db.t3.micro)**: ~$12.00/month
-- **NAT Gateway**: ~$32.00/month (biggest cost component)
-- **EBS Storage (60GB total)**: ~$6.00/month
-- **Data Transfer**: ~$5.00/month
-- **Total Development**: ~$70.00/month
+- RDS (db.t3.micro): ~$12.00/month
+- NAT Gateway: ~$32.00/month (biggest cost component)
+- EBS Storage (60GB total): ~$6.00/month
+- Data Transfer: ~$5.00/month
+- Total Development: ~$70.00/month
 
 ### Production Environment (Estimated)
-- **EC2 Instances (3x t3.small + Auto Scaling)**: ~$45.00/month
-- **RDS (db.t3.small + Multi-AZ)**: ~$50.00/month
-- **Application Load Balancer**: ~$20.00/month
-- **NAT Gateway (2x for HA)**: ~$64.00/month
-- **EBS Storage (200GB total)**: ~$20.00/month
-- **Data Transfer**: ~$15.00/month
-- **Total Production**: ~$214.00/month
+- EC2 Instances (3x t3.small + Auto Scaling): ~$45.00/month
+- RDS (db.t3.small + Multi-AZ): ~$50.00/month
+- Application Load Balancer: ~$20.00/month
+- NAT Gateway (2x for HA): ~$64.00/month
+- EBS Storage (200GB total): ~$20.00/month
+- Data Transfer: ~$15.00/month
+- Total Production: ~$214.00/month
 
 ## Cost Optimization Strategies
 
@@ -60,20 +60,20 @@ resource "aws_spot_instance_request" "web_spot" {
 ```
 
 #### Reserved Instances for Production
-- **1-year term**: 40% savings
-- **3-year term**: 60% savings
-- **Convertible RIs**: Flexibility to change instance types
+- 1-year term: 40% savings
+- 3-year term: 60% savings
+- Convertible RIs: Flexibility to change instance types
 
 ### 2. Network Cost Optimization
 
 #### NAT Gateway Alternatives
 
-**Option 1: Single NAT Gateway (Current Implementation)**
+Option 1: Single NAT Gateway (Current Implementation)
 - Cost: $32/month
 - Trade-off: Single point of failure
 - Best for: Development environments
 
-**Option 2: NAT Instance (Cheapest)**
+Option 2: NAT Instance (Cheapest)
 ```hcl
 # Replace NAT Gateway with NAT Instance
 resource "aws_instance" "nat" {
@@ -90,7 +90,7 @@ resource "aws_instance" "nat" {
 - Cost: ~$3/month (94% savings)
 - Trade-off: Manual management, lower throughput
 
-**Option 3: VPC Endpoints**
+Option 3: VPC Endpoints
 ```hcl
 # Add VPC endpoints for AWS services
 resource "aws_vpc_endpoint" "s3" {
@@ -239,7 +239,7 @@ locals {
 - Minimal RDS instance (db.t3.micro)
 - 1-day backup retention
 - No Multi-AZ deployment
-- **Target Cost**: $50-70/month
+- Target Cost: $50-70/month
 
 ### Staging Environment
 - Use t3.small instances
@@ -247,7 +247,7 @@ locals {
 - Standard RDS instance (db.t3.small)
 - 7-day backup retention
 - No Multi-AZ deployment
-- **Target Cost**: $100-130/month
+- Target Cost: $100-130/month
 
 ### Production Environment
 - Use Reserved Instances for predictable workloads
@@ -255,7 +255,7 @@ locals {
 - Multi-AZ RDS deployment
 - Read replicas for performance
 - 30-day backup retention
-- **Target Cost**: $180-250/month
+- Target Cost: $180-250/month
 
 ## Cost Monitoring Tools
 
@@ -280,9 +280,9 @@ resource "aws_budgets_budget" "monthly_budget" {
 ```
 
 ### Third-Party Tools
-- **CloudHealth**: Advanced cost optimization
-- **Cloudability**: Cost analytics and recommendations
-- **ParkMyCloud**: Automated resource scheduling
+- CloudHealth: Advanced cost optimization
+- Cloudability: Cost analytics and recommendations
+- ParkMyCloud: Automated resource scheduling
 
 ## Automated Cost Optimization
 
@@ -345,21 +345,21 @@ resource "aws_autoscaling_group" "web_asg" {
 | Reserved Instances | N/A | 40% | $800 |
 | GP3 Storage | 20% | 20% | $100 |
 | Resource Scheduling | 60% | 30% | $400 |
-| **Total Potential** | **80%** | **35%** | **$2,200** |
+| Total Potential | 80% | 35% | $2,200 |
 
 ## Implementation Priority
 
-1. **High Impact, Low Effort**
+1. High Impact, Low Effort
    - Switch to GP3 storage
    - Implement resource tagging
    - Set up billing alarms
 
-2. **High Impact, Medium Effort**
+2. High Impact, Medium Effort
    - Replace NAT Gateway with NAT Instance (dev)
    - Implement Auto Scaling
    - Purchase Reserved Instances (prod)
 
-3. **Medium Impact, High Effort**
+3. Medium Impact, High Effort
    - Implement comprehensive monitoring
    - Set up automated resource scheduling
    - Optimize data transfer patterns

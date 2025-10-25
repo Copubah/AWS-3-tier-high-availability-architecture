@@ -82,19 +82,19 @@
           <mxGeometry x="1080" y="150" width="100" height="30" as="geometry" />
         </mxCell>
         
-        <mxCell id="sg-bastion" value="🛡️ Bastion SG&#10;SSH (22)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+        <mxCell id="sg-bastion" value="Bastion SG&#10;SSH (22)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
           <mxGeometry x="1080" y="180" width="80" height="30" as="geometry" />
         </mxCell>
         
-        <mxCell id="sg-web" value="🛡️ Web SG&#10;HTTP/HTTPS" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+        <mxCell id="sg-web" value="Web SG&#10;HTTP/HTTPS" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
           <mxGeometry x="1080" y="210" width="80" height="30" as="geometry" />
         </mxCell>
         
-        <mxCell id="sg-app" value="🛡️ App SG&#10;Port 8080" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+        <mxCell id="sg-app" value="App SG&#10;Port 8080" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
           <mxGeometry x="1080" y="240" width="80" height="30" as="geometry" />
         </mxCell>
         
-        <mxCell id="sg-db" value="🛡️ DB SG&#10;MySQL (3306)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+        <mxCell id="sg-db" value="DB SG&#10;MySQL (3306)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
           <mxGeometry x="1080" y="270" width="80" height="30" as="geometry" />
         </mxCell>
         
